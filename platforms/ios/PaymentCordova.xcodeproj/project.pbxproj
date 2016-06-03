@@ -424,7 +424,7 @@
 				INFOPLIST_FILE = "PaymentCordova/PaymentCordova-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = PaymentCordova;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/efe.ariaroo/Documents/dev/cordova/ios-final/WITHOUT_DEFERRED/cordova-payment-samples/platforms/ios/PaymentCordova/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "./PaymentCordova/Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -451,7 +451,7 @@
 				INFOPLIST_FILE = "PaymentCordova/PaymentCordova-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = PaymentCordova;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/efe.ariaroo/Documents/dev/cordova/ios-final/WITHOUT_DEFERRED/cordova-payment-samples/platforms/ios/PaymentCordova/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "./PaymentCordova/Bridging-Header.h";
 			};
 			name = Release;
 		};
