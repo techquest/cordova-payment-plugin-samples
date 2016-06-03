@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.interswitch.payment.cordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="PaymentPlugin">
+        <param name="android-package" value="PaymentPlugin" />
+    </feature>
+    <feature name="SpinnerDialog">
+        <param name="android-package" value="com.filfatstudios.spinnerdialog.SpinnerDialog" />
+    </feature>
+    <name>PaymentCordova</name>
+    <description />
+    <author />
+    <content src="index.html" />
+    <allow-navigation href="*" />
+    <allow-intent href="itms:*" />
+    <allow-intent href="itms-apps:*" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="AndroidLaunchMode" value="singleTop" />
+    <preference name="ErrorUrl" value="" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="BackupWebStorage" value="cloud" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="FadeSplashScreen" value="true" />
+    <preference name="FadeSplashScreenDuration" value=".25" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="SuppressesIncrementalRendering" value="false" />
+    <preference name="TopActivityIndicator" value="gray" />
+    <preference name="GapBetweenPages" value="0" />
+    <preference name="PageLength" value="0" />
+    <preference name="PaginationBreakingMode" value="page" />
+    <preference name="PaginationMode" value="unpaginated" />
+    <preference name="UIWebViewDecelerationSpeed" value="normal" />
+    <preference name="monaca:targetFamilyiPhone" value="1" />
+    <preference name="monaca:targetFamilyiPad" value="1" />
+    <access origin="*" />
+    <preference name="KeepRunning" value="true" />
+    <preference name="monaca:AndroidIsPackageNameSeparate" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="Orientation" value="default" />
+    <preference name="SplashScreenDelay" value="1000" />
+    <preference name="Fullscreen" value="false" />
+</widget>

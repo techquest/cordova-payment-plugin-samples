@@ -1,0 +1,65 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"PaymentPlugin\"><param name=\"android-package\" value=\"PaymentPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SpinnerDialog\"><param name=\"android-package\" value=\"com.filfatstudios.spinnerdialog.SpinnerDialog\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.onsen.quickstart"
+        },
+        "cordova-plugin-add-swift-support": {
+            "PACKAGE_NAME": "io.onsen.quickstart"
+        },
+        "com.interswitchng.sdk.payment": {
+            "PACKAGE_NAME": "io.onsen.quickstart"
+        },
+        "com.filfatstudios.spinnerdialog": {
+            "PACKAGE_NAME": "io.onsen.quickstart"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/com.interswitchng.sdk.payment/www/PaymentPlugin.js",
+            "id": "com.interswitchng.sdk.payment.PaymentPlugin",
+            "clobbers": [
+                "PaymentPlugin"
+            ]
+        },
+        {
+            "file": "plugins/com.filfatstudios.spinnerdialog/www/SpinnerDialog.js",
+            "id": "com.filfatstudios.spinnerdialog.SpinnerDialog",
+            "clobbers": [
+                "SpinnerDialog"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-whitelist": "1.2.2",
+        "cordova-plugin-add-swift-support": "1.0.4",
+        "com.interswitchng.sdk.payment": "0.0.1",
+        "com.filfatstudios.spinnerdialog": "1.0.2"
+    }
+}

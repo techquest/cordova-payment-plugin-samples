@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="com.interswitchng.sdk.payment" version="0.0.1"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>PaymentPlugin</name>
+    <description>Cordova Payment Plugin on Interswitch Platform</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,payment</keywords>
+    <repo></repo>
+    <issue></issue>
+
+    <js-module name="PaymentPlugin" src="www/PaymentPlugin.js">
+        <clobbers target="PaymentPlugin" />
+    </js-module>
+    
+    <!-- android -->
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="PaymentPlugin" >
+                <param name="android-package" value="PaymentPlugin"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/PaymentPlugin.java" target-dir="src/" />
+        <source-file src="src/android/PluginUtils.java" target-dir="src/" />
+        <source-file src="src/android/PayWithOutUI.java" target-dir="src/" />
+        <source-file src="src/android/PayWithUI.java" target-dir="src/" />
+
+        <framework src="com.android.support:appcompat-v7:23.1.1" />
+        <framework src="com.android.support:design:23.1.1" />
+        <framework custom="true" src="src/android/build.gradle" type="gradleReference" />
+        <resource-file src="libs/payment-android-release.aar"
+            target="libs/payment-android-release.aar" />
+        <resource-file src="libs/deviceprint-release-2.2.0.aar"
+            target="libs/deviceprint-release-2.2.0.aar" />
+        <resource-file src="libs/core.jar" target="libs/core.jar" />
+        <resource-file src="libs/gson-2.3.1.jar" target="libs/gson-2.3.1.jar" />
+        <resource-file src="libs/payment.jar" target="libs/payment.jar" />
+    </platform>
+
+
+    <platform name='ios'>
+        <config-file target='config.xml' parent='/*'>
+          <feature name='PaymentPlugin'>
+            <param name='ios-package' value='PaymentPlugin'/>
+          </feature>
+        </config-file>
+        <source-file src='src/ios/PaymentPlugin.swift'/>
+        <source-file src='src/ios/PayWithoutUI.swift'/>
+        <source-file src='src/ios/PayWithUI.swift'/>
+        <source-file src='src/ios/Utils.swift'/>
+
+        <framework src="src/ios/Frameworks/PaymentSDK.framework" custom="true"/>
+    </platform>
+
+    <dependency id="cordova-plugin-add-swift-support" url="https://github.com/akofman/cordova-plugin-add-swift-support"/>
+</plugin>

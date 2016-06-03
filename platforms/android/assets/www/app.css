@@ -1,0 +1,27 @@
+ons-list-item[modifier="material"] {
+  min-height: 52px !important;
+}
+
+#todo-title {
+  cursor: text;
+  height: 24px;
+  line-height: 24px;
+}
+
+.title {
+  transition: all 0.1s linear;
+}
+
+.done {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+ons-splitter-side {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.todo-input {
+  margin-top: -2px;
+  font-size: 17px;
+}

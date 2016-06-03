@@ -1,0 +1,28 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.filfatstudios.spinnerdialog": {
+            "PACKAGE_NAME": "com.interswitch.payment.cordova"
+        },
+        "com.interswitchng.sdk.payment": {
+            "PACKAGE_NAME": "com.interswitch.payment.cordova"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.interswitch.payment.cordova"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-add-swift-support": {
+            "PACKAGE_NAME": "com.interswitch.payment.cordova"
+        },
+        "cordova-plugin-test-framework": {
+            "PACKAGE_NAME": "com.interswitch.payment.cordova"
+        }
+    }
+}

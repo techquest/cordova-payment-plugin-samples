@@ -1,0 +1,36 @@
+{
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-add-swift-support": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/akofman/cordova-plugin-add-swift-support",
+            "subdir": "."
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "com.interswitchng.sdk.payment": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-payment-plugin"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.filfatstudios.spinnerdialog": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/filfat-Studios-AB/cordova-plugin-spinnerdialog",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}

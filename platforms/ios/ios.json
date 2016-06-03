@@ -1,0 +1,87 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"SpinnerDialog\"><param name=\"ios-package\" value=\"CDVSpinnerDialog\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"PaymentPlugin\"><param name=\"ios-package\" value=\"PaymentPlugin\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "com.filfatstudios.spinnerdialog": {
+            "PACKAGE_NAME": "com.interswitch.payment.cordova"
+        },
+        "cordova-plugin-add-swift-support": {
+            "PACKAGE_NAME": "com.interswitch.payment.cordova"
+        },
+        "com.interswitchng.sdk.payment": {
+            "PACKAGE_NAME": "com.interswitch.payment.cordova"
+        },
+        "cordova-plugin-test-framework": {
+            "PACKAGE_NAME": "com.interswitch.payment.cordova"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.interswitch.payment.cordova"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/com.filfatstudios.spinnerdialog/www/SpinnerDialog.js",
+            "id": "com.filfatstudios.spinnerdialog.SpinnerDialog",
+            "pluginId": "com.filfatstudios.spinnerdialog",
+            "clobbers": [
+                "SpinnerDialog"
+            ]
+        },
+        {
+            "file": "plugins/com.interswitchng.sdk.payment/www/PaymentPlugin.js",
+            "id": "com.interswitchng.sdk.payment.PaymentPlugin",
+            "pluginId": "com.interswitchng.sdk.payment",
+            "clobbers": [
+                "PaymentPlugin"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-test-framework/www/tests.js",
+            "id": "cordova-plugin-test-framework.cdvtests",
+            "pluginId": "cordova-plugin-test-framework"
+        },
+        {
+            "file": "plugins/cordova-plugin-test-framework/www/jasmine_helpers.js",
+            "id": "cordova-plugin-test-framework.jasmine_helpers",
+            "pluginId": "cordova-plugin-test-framework"
+        },
+        {
+            "file": "plugins/cordova-plugin-test-framework/www/medic.js",
+            "id": "cordova-plugin-test-framework.medic",
+            "pluginId": "cordova-plugin-test-framework"
+        },
+        {
+            "file": "plugins/cordova-plugin-test-framework/www/main.js",
+            "id": "cordova-plugin-test-framework.main",
+            "pluginId": "cordova-plugin-test-framework"
+        }
+    ],
+    "plugin_metadata": {
+        "com.filfatstudios.spinnerdialog": "1.0.2",
+        "cordova-plugin-add-swift-support": "1.0.4",
+        "com.interswitchng.sdk.payment": "0.0.1",
+        "cordova-plugin-test-framework": "1.1.3-dev",
+        "cordova-plugin-whitelist": "1.2.2"
+    }
+}
