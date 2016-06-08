@@ -1,0 +1,6 @@
+framework module Pods_PaymentCordova {
+  umbrella header "Pods-PaymentCordova-umbrella.h"
+
+  export *
+  module * { export * }
+}

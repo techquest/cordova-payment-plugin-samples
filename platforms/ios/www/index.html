@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300italic,300,400italic,500,700,700italic,500italic' rel='stylesheet'
+    type='text/css'>
+  <title>Onsen UI 2.0 Quickstart</title>
+
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="app.css" type="text/css" media="all" />
+  <!-- Cordova reference -->
+  <script src="cordova.js"></script>
+  <!-- -->
+  <script src="lib/onsenui/js/onsenui.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/onsenui/js/angular-onsenui.js"></script>
+  <script src="app.js"></script>
+  <style>
+    .page__content.page--material__content {
+      padding: 10%;
+    }
+  </style>
+</head>
+
+<body>
+    
+ 
+  <ons-splitter var="splitter">
+    <ons-splitter-side var="menu" side="left" width="70%" collapse swipeable>
+      <ons-page modifier="material">
+        <ons-list modifier="material">
+          <ons-list-header modifier="material">Payment Options</ons-list-header>
+          <ons-list-item modifier="material" ng-click="splitterContent.load('todo.html',{animation:'slide'}); splitter.left.close()">
+            PCIDSS NO.
+          </ons-list-item>
+		  <ons-list-item modifier="material" ng-click="splitterContent.load('noui.html',{animation:'slide'}); splitter.left.close();">
+            PCIDSS YES.
+          </ons-list-item>
+        </ons-list>
+      </ons-page>
+    </ons-splitter-side>
+    <ons-splitter-content var="splitterContent" page="todo.html"></ons-splitter-content>
+  </ons-splitter>
+  
+<ons-template id="noui.html">
+<ons-navigator var="startNavigator">
+<ons-page style="padding:5%" modifier="material" ng-controller="uiController">
+  <ons-toolbar modifier="material">
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.open()" modifier="material">
+            <ons-icon icon="md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Interswitch Cordova NoUI</div>
+      </ons-toolbar>
+      <div>        
+        <ons-button ng-click="splitterContent.load('payment.html',{animation:'slide'}); splitter.left.close();" modifier="large--cta">
+          Pay with Card / Token
+        </ons-button>
+      </div>
+	  <br>
+	  <div>        
+        <ons-button ng-click="splitterContent.load('wallet.html',{animation:'slide'}); splitter.left.close();" modifier="large--cta">
+          Pay with Wallet
+        </ons-button>
+      </div>
+	  <br>
+	  <div>        
+        <ons-button ng-click="splitterContent.load('validate.html',{animation:'slide'}); splitter.left.close();" modifier="large--cta">
+         Validate Card
+        </ons-button>
+      </div>
+	  <br>	  
+	  <div>        
+        <ons-button ng-click="splitterContent.load('paystatus.html',{animation:'slide'}); splitter.left.close();" modifier="large--cta">
+          Check Payment Status
+        </ons-button>
+      </div>			  
+</ons-page>
+</ons-navigator>
+</ons-template>
+<!--<ons-template id="validateOtp.html">
+ <ons-navigator var="startNavigator">
+    <ons-page style="padding:5%" modifier="material" ng-controller="Paycontroller">
+      <ons-toolbar modifier="material">
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.open()" modifier="material">
+            <ons-icon icon="md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Interswitch Cordova NoUI</div>
+      </ons-toolbar>
+      <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.otp" placeholder="One time Password" type="number" required>
+      </div>
+	  <br>	 
+      <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.transactionRef" placeholder="Transaction Reference" type="number" required>
+      </div>	  
+      <br>
+		<div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.otpTransactionRef" placeholder="Otp Transaction Reference" type="number" required>
+      </div>	  
+      <br>		  
+      <div>              
+        <ons-button ng-click="authorizeOtp()" modifier="large--cta">
+          Authorize Otp
+        </ons-button>
+      </div>
+    </ons-page>
+	</ons-navigator>
+  </ons-template>-->
+<ons-template id="paystatus.html">
+ <ons-navigator var="startNavigator">
+    <ons-page style="padding:5%" modifier="material" ng-controller="Paycontroller">
+      <ons-toolbar modifier="material">
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.open()" modifier="material">
+            <ons-icon icon="md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Interswitch Cordova NoUI</div>
+      </ons-toolbar>
+      <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.transactionRef" placeholder="Transaction Reference Number" type="number" required>
+      </div>
+	  <br>	 
+      <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.amount" placeholder="Amount" type="number" required>
+      </div>	  
+      <br>	  
+      <div>        
+       <!-- <input style="width:100%" class="text-input--material" ng-model="input.cardWallet" placeholder="Customer Identifier" type="text" required>-->
+        <ons-button ng-click="paymentStatus()" modifier="large--cta">
+          Payment Status
+        </ons-button>
+      </div>
+    </ons-page>
+	</ons-navigator>
+  </ons-template>
+  <ons-template id="payment.html">
+ <ons-navigator var="startNavigator">
+    <ons-page style="padding:5%" modifier="material" ng-controller="Paycontroller">
+      <ons-toolbar modifier="material">
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.open()" modifier="material">
+            <ons-icon icon="md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Interswitch Cordova NoUI</div>
+      </ons-toolbar>
+      <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.cardPan" placeholder="Pan" type="text" required>
+      </div>
+	  <br>
+	  <div>
+        <input style="width:100%" class="text-input--material" ng-model="input.amount" placeholder="Amount" type="number" required>
+      </div>
+	  <br>
+      <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.cvv" placeholder="CVV" type="number" required>
+      </div>
+	  <br>
+	  <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.pin" placeholder="PIN" type="number"  required>
+      </div>
+      <br>
+	  <div>
+        <input style="width:100%" class="text-input--material" ng-model="input.expiryDate" placeholder="Expiry Date" type="number"  required>
+      </div>
+      <br>
+	  <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.customerId" placeholder="Customer Identifier" type="number"  required>
+      </div>
+      <br>
+	  <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.currency" placeholder="Currency" type="text"  required>
+      </div>
+      <br>
+      <div> 	  
+       <!-- <input style="width:100%" class="text-input--material" ng-model="input.cardWallet" placeholder="Customer Identifier" type="text" required>-->
+        <ons-button ng-click="makePayment()" modifier="large--cta">
+          Make Payment
+        </ons-button>
+      </div>
+    </ons-page>
+	</ons-navigator>
+  </ons-template>
+  <ons-template id="validate.html">
+ <ons-navigator var="startNavigator">
+    <ons-page style="padding:5%" modifier="material" ng-controller="Paycontroller">
+      <ons-toolbar modifier="material">
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.open()" modifier="material">
+            <ons-icon icon="md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Interswitch Cordova NoUI</div>
+      </ons-toolbar>
+      <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.validatCardPan" placeholder="Pan" type="text" required>
+      </div>
+	   
+	  <br>
+      <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.cvv" placeholder="CVV" type="number" required>
+      </div>
+	  <br>
+	  <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.pin" placeholder="PIN" type="number" required>
+      </div>
+      <br>
+	  <div>
+        <input style="width:100%" class="text-input--material" ng-model="input.expiryDate" placeholder="Expiry Date" type="number" required>
+      </div>
+      <br>
+	  <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.customerId" placeholder="Customer Identifier" type="number" required>
+      </div>      
+      <br>
+      <div>
+        <ons-button ng-click="validateCard()" modifier="large--cta">
+          Validate Card
+        </ons-button>
+      </div>
+    </ons-page>
+	</ons-navigator>
+  </ons-template>
+    
+  <ons-template id="wallet.html">
+ <ons-navigator var="startNavigator">
+    <ons-page style="padding:5%" modifier="material" ng-controller="Paycontroller">
+      <ons-toolbar modifier="material">
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.open()" modifier="material">
+            <ons-icon icon="md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Interswitch Cordova NoUI</div>
+      </ons-toolbar>
+      <div>
+        <select id="paymentItems" style="width:100%" ng-options="token.token as token.cardProduct for token in list.tokens" ng-model="tokens" ng-click="getPaymentMethods()">
+			<option value="" ng-if="false"></option>		
+		</select>
+      </div>	
+	  <br>
+	  <div>
+        <input style="width:100%" class="text-input--material" ng-model="input.amount" placeholder="Amount" type="number" required>
+      </div>
+	  <br>
+      <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.cvv" placeholder="CVV" type="number" required>
+      </div>
+	  <br>
+	  <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.pin" placeholder="PIN" type="number" required>
+      </div>
+      <br>
+	  <div>
+        <input style="width:100%" class="text-input--material" ng-model="input.expiryDate" placeholder="Expiry Date" type="number" required>
+      </div>
+      <br>
+	  <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.customerId" placeholder="Customer Identifier" type="number" required>
+      </div>
+      <br>
+	  <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.requestorId" placeholder="Requester Identifier" type="number" required>
+      </div>
+      <br>
+	  <div>        
+        <input style="width:100%" class="text-input--material" ng-model="input.currency" placeholder="Currency" type="text" required>
+      </div>
+      <br>
+      <div>        
+       <!-- <input style="width:100%" class="text-input--material" ng-model="input.cardWallet" placeholder="Customer Identifier" type="text" required>-->
+        <ons-button ng-click="payWithWalletNoUI()" modifier="large--cta">
+          Make Wallet Payment
+        </ons-button>
+      </div>
+    </ons-page>
+	</ons-navigator>
+  </ons-template>
+  <ons-template id="todo.html">
+ <ons-navigator var="startNavigator">
+    <ons-page style="padding:5%" modifier="material" ng-controller="Paycontroller">
+      <ons-toolbar modifier="material">
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.open()" modifier="material">
+            <ons-icon icon="md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Interswitch Cordova</div>
+      </ons-toolbar>
+      <div>        
+        <ons-button ng-click="payCardOrWallet()" modifier="large--cta">
+          Pay with Card / Wallet
+        </ons-button>
+      </div>
+	  <br>
+	  <div>
+        <ons-button ng-click="payWithCard()" modifier="large--cta">
+          Pay with Card
+        </ons-button>
+      </div>
+	  <br>
+      <div>        
+        <ons-button ng-click="payWithWallet()" modifier="large--cta">
+         Pay with Wallet
+        </ons-button>
+      </div>
+	  <br>
+	  <div>        
+        <ons-button ng-click="payWithToken()" modifier="large--cta">
+         Pay with Token
+        </ons-button>
+      </div>
+      <br>
+      <div>        
+       <!-- <input style="width:100%" class="text-input--material" ng-model="input.cardWallet" placeholder="Customer Identifier" type="text" required>-->
+        <ons-button ng-click="validatePaymentCard()" modifier="large--cta">
+          Validate Card
+        </ons-button>
+      </div>
+    </ons-page>
+	</ons-navigator>
+  </ons-template>
+</body>
+
+</html>
+<script>
+  ons.ready(function(){
+    init();	
+  })
+</script>
