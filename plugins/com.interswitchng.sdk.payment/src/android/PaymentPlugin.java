@@ -59,12 +59,26 @@ public class PaymentPlugin extends CordovaPlugin  {
             });
             return true;
         }
-        else if(action.equals("AuthorizeOTP")){
+        else if(action.equals("AuthorizePurchase")){
             cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        payWithOutUI.authorizeOtp(action, args, callbackContext); //asyncronous call
+                        payWithOutUI.authorizePurchase(action, args, callbackContext); //asyncronous call
+                    } catch (Exception error) {
+                        callbackContext.error(error.toString());
+                    }
+                    // Call the success function of the .js file
+                }
+            });
+            return true;
+        }
+        else if(action.equals("AuthorizeCard")){
+            cordova.getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        payWithOutUI.authorizeCard(action, args, callbackContext); //asyncronous call
                     } catch (Exception error) {
                         callbackContext.error(error.toString());
                     }
@@ -300,9 +314,6 @@ public class PaymentPlugin extends CordovaPlugin  {
                 if((clientId !=null && clientSecret != null) && (clientId !="" && clientSecret !="")){
                     options = RequestOptions.builder().setClientId(this.clientId).setClientSecret(this.clientSecret).build();
                     //callbackContext.success("Initialization was successfull");
-                }
-                else{
-                    //callbackContext.error("Invalid ClientId or Client Secret : ");
                 }
             }
         }

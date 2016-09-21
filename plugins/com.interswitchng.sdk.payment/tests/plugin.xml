@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+<?xml version="1.0" encoding="UTF-8"?><!--
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
   distributed with this work for additional information
@@ -16,12 +15,10 @@
   under the License.
 -->
 
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    id="com.interswitchng.sdk.payment-tests"
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.interswitchng.sdk.payment-tests"
     version="0.0.1">
     <name>Cordova Device Plugin Tests</name>
     <license>Apache 2.0</license>
 
-    <js-module src="tests.js" name="tests">
-    </js-module>
+    <js-module src="tests.js" name="tests"></js-module>
 </plugin>
