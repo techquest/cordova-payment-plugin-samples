@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.interswitch.payment.cordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
+    <feature name="SpinnerDialog">
+        <param name="android-package" value="com.filfatstudios.spinnerdialog.SpinnerDialog" />
+    </feature>
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
     <feature name="PaymentPlugin">
         <param name="android-package" value="PaymentPlugin" />
-    </feature>
-    <feature name="SpinnerDialog">
-        <param name="android-package" value="com.filfatstudios.spinnerdialog.SpinnerDialog" />
     </feature>
     <name>PaymentCordova</name>
     <description />

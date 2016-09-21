@@ -213,25 +213,36 @@ function init() {
       SpinnerDialog.show("", "Please wait ...", null);
       
       var makePaymentSuccess = function(response) {
+        var responseObject ={};
+        if(response.responseCode !== undefined){
+          responseObject = response;
+        }else if (response.responseCode === undefined){
+          responseObject = JSON.parse(response);
+        }
+        console.log(responseObject);
         SpinnerDialog.hide();
-        var responseObject = JSON.parse(response);
-
-        if(responseObject.otpTransactionIdentifier) {
-          var transactionIdentifier = responseObject.transactionIdentifier;
-          
-          ons.notification.prompt(responseObject.message).then(
+        if(responseObject.responseCode) {
+          if (responseObject.responseCode === "T0") {
+            ons.notification.prompt(responseObject.message).then(
             function(otp) {
+              responseObject.method = "makePayment";
               responseObject.otpValue = otp;
-              authorizeOtp(responseObject);
+              authorizePurchase(responseObject);
             }
           );
-        } else {
-          alert(responseObject.message);
-        }
+          }         
+        } else { 
+          //console.log(responseObject);
+          if(responseObject.detailMessage !== undefined && responseObject.detailMessage !== null ){
+            alert(responseObject.detailMessage);  
+          }else{
+            alert(responseObject);
+          }
+        }        
       }
       var makePaymentFail = function(response) {
         SpinnerDialog.hide();
-       
+        console.log(response);
         alert(response);
       }
         
@@ -280,15 +291,36 @@ function init() {
         
       var validateCardSuccess = function(response) {
         SpinnerDialog.hide();
-        var validateCardResponse = JSON.parse(response);
+        console.log(response);
+        //var validateCardResponse = JSON.parse(response);
+        if(response.responseCode) {
+          if (response.responseCode === "T0") {
+            ons.notification.prompt(response.message).then(
+            function(otp) {
+              response.method = "validateCard";
+              response.otpValue = otp;
+              authorizePurchase(response);
+            }
+          );
+          }
+          else if (response.responseCode === "S0") {
 
-        var token = validateCardResponse.token;
-        var tokenExpiryDate = validateCardResponse.tokenExpiryDate;
-        var balance = validateCardResponse.balance;
-        var panLast4Digits = validateCardResponse.panLast4Digits;
-        var cardType = validateCardResponse.cardType;
-        
-        alert("Card Validation was successful");
+          } 
+        } else {
+          var responseObject = JSON.parse(response);
+           if(responseObject.message !== undefined){
+              alert(responseObject.message);
+          }else{
+            alert(response);
+          }
+        }
+        /*var token = response.token;
+        var tokenExpiryDate = response.tokenExpiryDate;
+        var balance = response.balance;
+        var panLast4Digits = response.panLast4Digits;
+        var cardType = response.cardType;
+        */
+        //alert("Card Validation was successful");
       }
                  
       var validateCardFail = function(response) {
@@ -300,31 +332,37 @@ function init() {
     }
 
     
-    function authorizeOtp(results) {
+    function authorizePurchase(results) {
       if(results !== null && results.otpValue && results.otpValue.length > 0){
         SpinnerDialog.show("", "Verifying One Time Password ...", null);
         
-        var authorizeOtpRequest = {
+        var authorizePurchaseRequest = {
           otp : results.otpValue,
-          otpTransactionIdentifier: results.otpTransactionIdentifier,
-          transactionRef: results.transactionRef
+          paymentId: results.paymentId,
+          transactionRef: results.transactionRef,
+          authData: results.authData
         }
 
-        var authorizeOtpSuccess = function(response) {
-          SpinnerDialog.hide();
-          
+        var authorizePurchaseSuccess = function(response) {
+          SpinnerDialog.hide();          
           var responseObject = JSON.parse(response);
           var theTransactionRef = responseObject.transactionRef;
-          
-          alert("Success: Approved by Financial Institution");
+          console.log(responseObject);
+          alert(theTransactionRef);
         }
 
-        var authorizeOtpFail = function(response) {
-          SpinnerDialog.hide();          
-          alert("Payment failed");
+        var authorizePurchaseFail = function(response) {
+          SpinnerDialog.hide(); 
+          console.log(response);         
+          alert(response);
+        }
+        if(results.method ==="makePayment"){
+          PaymentPlugin.authorizePurchase(authorizePurchaseRequest, authorizePurchaseSuccess, authorizePurchaseFail);        
+        }
+        else if (results.method ==="validateCard"){
+          PaymentPlugin.authorizeCard(authorizePurchaseRequest, authorizePurchaseSuccess, authorizePurchaseFail);  
         }
         
-        PaymentPlugin.authorizeOtp(authorizeOtpRequest, authorizeOtpSuccess, authorizeOtpFail);        
       } else {
         alert("Invalid OTP value!");
       }
