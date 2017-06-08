@@ -19,13 +19,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.Bundle;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+
 /**
  * @author Babajide.Apata
  * @description Expose the Payment to Cordova JavaScript Applications
  */
 
 public class PaymentPlugin extends CordovaPlugin  {
-	public PaymentPlugin() {
+    public PaymentPlugin() {
     }
     private String clientId;
     private String clientSecret;
@@ -40,10 +44,18 @@ public class PaymentPlugin extends CordovaPlugin  {
     //final RequestOptions options = RequestOptions.builder().setClientId(this.clientId).setClientSecret(this.clientSecret).build();
 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
-		super.initialize(cordova, webView);
+        super.initialize(cordova, webView);
         activity =  cordova.getActivity();
-	}
-	public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
+        try{
+            ApplicationInfo applicationInfo = activity.getPackageManager().getApplicationInfo(activity.getPackageName(), PackageManager.GET_META_DATA);
+            Bundle bundle = applicationInfo.metaData;
+            clientId = bundle.getString("clientId");
+            clientSecret = bundle.getString("clientSecret");
+        }catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
         final PayWithOutUI payWithOutUI = new PayWithOutUI(activity,clientId,clientSecret);
         final PayWithUI payWithUI = new PayWithUI(activity,clientId,clientSecret);
         if (action.equals("Init")) {
@@ -59,12 +71,26 @@ public class PaymentPlugin extends CordovaPlugin  {
             });
             return true;
         }
-        else if(action.equals("AuthorizeOTP")){
+        else if(action.equals("AuthorizePurchase")){
             cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        payWithOutUI.authorizeOtp(action, args, callbackContext); //asyncronous call
+                        payWithOutUI.authorizePurchase(action, args, callbackContext); //asyncronous call
+                    } catch (Exception error) {
+                        callbackContext.error(error.toString());
+                    }
+                    // Call the success function of the .js file
+                }
+            });
+            return true;
+        }
+        else if(action.equals("AuthorizeCard")){
+            cordova.getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        payWithOutUI.authorizeCard(action, args, callbackContext); //asyncronous call
                     } catch (Exception error) {
                         callbackContext.error(error.toString());
                     }
@@ -289,8 +315,6 @@ public class PaymentPlugin extends CordovaPlugin  {
         try{
             if (args != null && args.length() > 0) {
                 JSONObject params = args.getJSONObject(0);
-                this.clientId=params.getString("clientId");
-                this.clientSecret=params.getString("clientSecret");
                 String paymentApi = params.getString("paymentApi");
                 String passportApi = params.getString("passportApi");
                 if( (paymentApi != null && paymentApi.length()>0) && (passportApi != null && passportApi.length()>0)){
@@ -300,9 +324,6 @@ public class PaymentPlugin extends CordovaPlugin  {
                 if((clientId !=null && clientSecret != null) && (clientId !="" && clientSecret !="")){
                     options = RequestOptions.builder().setClientId(this.clientId).setClientSecret(this.clientSecret).build();
                     //callbackContext.success("Initialization was successfull");
-                }
-                else{
-                    //callbackContext.error("Invalid ClientId or Client Secret : ");
                 }
             }
         }

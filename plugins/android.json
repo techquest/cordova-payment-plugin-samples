@@ -10,10 +10,12 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.interswitch.payment.cordova"
         },
-        "com.interswitchng.sdk.payment": {
+        "com.filfatstudios.spinnerdialog": {
             "PACKAGE_NAME": "com.interswitch.payment.cordova"
         },
-        "com.filfatstudios.spinnerdialog": {
+        "com.interswitchng.sdk.payment": {
+            "CLIENT_ID": "IKIA7B379B0114CA57FAF8E19F5CC5063ED2220057EF",
+            "CLIENT_SECRET": "MiunSQ5S/N219UCVP1Lt2raPfwK9lMoiV/PdBX5v/R4=",
             "PACKAGE_NAME": "com.interswitch.payment.cordova"
         }
     },

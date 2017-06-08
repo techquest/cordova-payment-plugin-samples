@@ -6,11 +6,11 @@ import UIKit
 import PaymentSDK
 
 
-public class Utils {
+open class Utils {
     
-    static var dateFormatter = NSDateFormatter()
+    static var dateFormatter = DateFormatter()
     
-    class func getStringFromDict (theDict: [String : AnyObject], theKey: String) -> String {
+    class func getStringFromDict (_ theDict: [String : AnyObject], theKey: String) -> String {
         var result : String? = ""
         
         if let theValue = theDict[theKey] as? Int {
@@ -21,68 +21,63 @@ public class Utils {
         return result!
     }
     
-    class func sendErrorBackToJavascript(cdvPlugin: PaymentPlugin, cdvCommand: CDVInvokedUrlCommand, errMsg: String) {
-        let pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAsString: errMsg)
-        cdvPlugin.commandDelegate!.sendPluginResult(pluginResult, callbackId: cdvCommand.callbackId)
+    class func sendErrorBackToJavascript(_ cdvPlugin: PaymentPlugin, cdvCommand: CDVInvokedUrlCommand, errMsg: String) {
+        let pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: errMsg)
+        cdvPlugin.commandDelegate!.send(pluginResult, callbackId: cdvCommand.callbackId)
     }
     
-    class func sendSuccessBackToJavascript(cdvPlugin: PaymentPlugin, cdvCommand: CDVInvokedUrlCommand, successMsg: String) {
-        let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsString: successMsg)
-        cdvPlugin.commandDelegate!.sendPluginResult(pluginResult, callbackId: cdvCommand.callbackId)
+    class func sendSuccessBackToJavascript(_ cdvPlugin: PaymentPlugin, cdvCommand: CDVInvokedUrlCommand, successMsg: String) {
+        let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: successMsg)
+        cdvPlugin.commandDelegate!.send(pluginResult, callbackId: cdvCommand.callbackId)
     }
     
-    class public func getJsonOfPurchaseResponse(purchaseResObj : PurchaseResponse) -> String {
+    class open func getJsonOfPurchaseResponse(_ purchaseResObj : PurchaseResponse) -> String {
         var purchaseResponseAsDict = [String:AnyObject]()
         
-        purchaseResponseAsDict["transactionIdentifier"] = purchaseResObj.transactionIdentifier
-        purchaseResponseAsDict["transactionRef"] = purchaseResObj.transactionRef
-        purchaseResponseAsDict["message"] = purchaseResObj.message
+        purchaseResponseAsDict["transactionIdentifier"] = purchaseResObj.transactionIdentifier as AnyObject
+        purchaseResponseAsDict["transactionRef"] = purchaseResObj.transactionRef as AnyObject
+        purchaseResponseAsDict["message"] = purchaseResObj.message as AnyObject
         
         if let theToken = purchaseResObj.token {
             if theToken.characters.count > 0 {
-                purchaseResponseAsDict["token"] = theToken
+                purchaseResponseAsDict["token"] = theToken as AnyObject
             }
         }
         if let theTokenExpiry = purchaseResObj.tokenExpiryDate {
             if theTokenExpiry.characters.count > 0 {
-                purchaseResponseAsDict["tokenExpiryDate"] = theTokenExpiry
+                purchaseResponseAsDict["tokenExpiryDate"] = theTokenExpiry as AnyObject
             }
         }
         if let thePanLast4 = purchaseResObj.panLast4Digits {
             if thePanLast4.characters.count > 0 {
-                purchaseResponseAsDict["panLast4Digits"] = thePanLast4
+                purchaseResponseAsDict["panLast4Digits"] = thePanLast4 as AnyObject
             }
         }
         if let theCardType = purchaseResObj.cardType {
             if theCardType.characters.count > 0 {
-                purchaseResponseAsDict["cardType"] = theCardType
-            }
-        }
-        if let theBalance = purchaseResObj.balance {
-            if theBalance.characters.count > 0 {
-                purchaseResponseAsDict["balance"] = theBalance
+                purchaseResponseAsDict["cardType"] = theCardType as AnyObject
             }
         }
         if let otpTransactionIdentifier = purchaseResObj.otpTransactionIdentifier {
             if otpTransactionIdentifier.characters.count > 0 {
-                purchaseResponseAsDict["otpTransactionIdentifier"] = otpTransactionIdentifier
+                purchaseResponseAsDict["otpTransactionIdentifier"] = otpTransactionIdentifier as AnyObject
             }
         }
         
         do {
-            let jsonNSData = try NSJSONSerialization.dataWithJSONObject(purchaseResponseAsDict, options: NSJSONWritingOptions(rawValue: 0))
-            return String(data: jsonNSData, encoding: NSUTF8StringEncoding)!
+            let jsonNSData = try JSONSerialization.data(withJSONObject: purchaseResponseAsDict, options: JSONSerialization.WritingOptions(rawValue: 0))
+            return String(data: jsonNSData, encoding: String.Encoding.utf8)!
         } catch _ {
         }
         return ""
     }
     
-    class func getJsonOfPaymentMethods(thePaymentMethods: [PaymentMethod]) -> String {
+    class func getJsonOfPaymentMethods(_ thePaymentMethods: [PaymentMethod]) -> String {
         var result : String = ""
         do {
             let listOfDicts : [Dictionary] = thePaymentMethods.map { return getDictOfPayment($0) }
-            let jsonNSData = try NSJSONSerialization.dataWithJSONObject(listOfDicts, options: NSJSONWritingOptions(rawValue: 0))
-            result = String(data: jsonNSData, encoding: NSUTF8StringEncoding)!
+            let jsonNSData = try JSONSerialization.data(withJSONObject: listOfDicts, options: JSONSerialization.WritingOptions(rawValue: 0))
+            result = String(data: jsonNSData, encoding: String.Encoding.utf8)!
             
             result = "{\"paymentMethods\": \(result)}"
         } catch _ {
@@ -90,46 +85,46 @@ public class Utils {
         return result
     }
     
-    class func getJsonOfPaymentStatus(thePaymentStatus: PaymentStatusResponse) -> String {
+    class func getJsonOfPaymentStatus(_ thePaymentStatus: PaymentStatusResponse) -> String {
         var paymentStatusAsDict = [String:AnyObject]()
         
-        paymentStatusAsDict["message"] = thePaymentStatus.message
-        paymentStatusAsDict["transactionRef"] = thePaymentStatus.transactionRef
-        paymentStatusAsDict["amount"] = thePaymentStatus.amount
+        paymentStatusAsDict["message"] = thePaymentStatus.message as AnyObject
+        paymentStatusAsDict["transactionRef"] = thePaymentStatus.transactionRef as AnyObject
+        paymentStatusAsDict["amount"] = thePaymentStatus.amount as AnyObject
         
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-        let transactionDateAsString = dateFormatter.stringFromDate(thePaymentStatus.transactionDate)
+        let transactionDateAsString = dateFormatter.string(from: thePaymentStatus.transactionDate)
         
-        paymentStatusAsDict["transactionDate"] = transactionDateAsString
-        paymentStatusAsDict["panLast4Digits"] = thePaymentStatus.panLast4Digits
+        paymentStatusAsDict["transactionDate"] = transactionDateAsString as AnyObject
+        paymentStatusAsDict["panLast4Digits"] = thePaymentStatus.panLast4Digits as AnyObject
         
         do {
-            let jsonNSData = try NSJSONSerialization.dataWithJSONObject(paymentStatusAsDict, options: NSJSONWritingOptions(rawValue: 0))
-            return String(data: jsonNSData, encoding: NSUTF8StringEncoding)!
+            let jsonNSData = try JSONSerialization.data(withJSONObject: paymentStatusAsDict, options: JSONSerialization.WritingOptions(rawValue: 0))
+            return String(data: jsonNSData, encoding: String.Encoding.utf8)!
         } catch _ {
         }
         return ""
     }
     
-    class func getJsonForAuthorizeOtpResponse(theOtpAuthorizeResponse: AuthorizeOtpResponse) -> String {
+    class func getJsonForAuthorizeOtpResponse(_ theOtpAuthorizeResponse: AuthorizeOtpResponse) -> String {
         return "{\"transactionRef\": \"\(theOtpAuthorizeResponse.transactionRef)\"}"
     }
     
-    class private func getDictOfPayment(thePaymentMethod: PaymentMethod) -> Dictionary<String, AnyObject> {
+    class fileprivate func getDictOfPayment(_ thePaymentMethod: PaymentMethod) -> Dictionary<String, AnyObject> {
         var paymentMethodAsDict = [String:AnyObject]()
         
-        paymentMethodAsDict["cardProduct"] = thePaymentMethod.cardProduct
-        paymentMethodAsDict["panLast4Digits"] = thePaymentMethod.panLast4Digits
-        paymentMethodAsDict["token"] = thePaymentMethod.token
+        paymentMethodAsDict["cardProduct"] = thePaymentMethod.cardProduct as AnyObject
+        paymentMethodAsDict["panLast4Digits"] = thePaymentMethod.panLast4Digits as AnyObject
+        paymentMethodAsDict["token"] = thePaymentMethod.token as AnyObject
         
         return paymentMethodAsDict
     }
-
-    class func showError(cdvPlugin: PaymentPlugin, message: String) {
-        let alertVc = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+    
+    class func showError(_ cdvPlugin: PaymentPlugin, message: String) {
+        let alertVc = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
         alertVc.addAction(action)
         
-        cdvPlugin.viewController?.presentViewController(alertVc, animated: true, completion: nil)
+        cdvPlugin.viewController?.present(alertVc, animated: true, completion: nil)
     }
 }

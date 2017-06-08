@@ -13,11 +13,25 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"PaymentPlugin\"><param name=\"android-package\" value=\"PaymentPlugin\" /></feature>",
+                            "xml": "<feature name=\"SpinnerDialog\"><param name=\"android-package\" value=\"com.filfatstudios.spinnerdialog.SpinnerDialog\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"SpinnerDialog\"><param name=\"android-package\" value=\"com.filfatstudios.spinnerdialog.SpinnerDialog\" /></feature>",
+                            "xml": "<feature name=\"PaymentPlugin\"><param name=\"android-package\" value=\"PaymentPlugin\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/manifest/application": [
+                        {
+                            "xml": "<meta-data android:name=\"clientId\" android:value=\"IKIA7B379B0114CA57FAF8E19F5CC5063ED2220057EF\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<meta-data android:name=\"clientSecret\" android:value=\"MiunSQ5S/N219UCVP1Lt2raPfwK9lMoiV/PdBX5v/R4=\" />",
                             "count": 1
                         }
                     ]
@@ -29,37 +43,39 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "io.onsen.quickstart"
         },
-        "cordova-plugin-add-swift-support": {
-            "PACKAGE_NAME": "io.onsen.quickstart"
-        },
-        "com.interswitchng.sdk.payment": {
-            "PACKAGE_NAME": "io.onsen.quickstart"
-        },
         "com.filfatstudios.spinnerdialog": {
             "PACKAGE_NAME": "io.onsen.quickstart"
+        },
+        "cordova-plugin-add-swift-support": {
+            "PACKAGE_NAME": "com.interswitch.payment.cordova"
+        },
+        "com.interswitchng.sdk.payment": {
+            "CLIENT_ID": "IKIA7B379B0114CA57FAF8E19F5CC5063ED2220057EF",
+            "CLIENT_SECRET": "MiunSQ5S/N219UCVP1Lt2raPfwK9lMoiV/PdBX5v/R4=",
+            "PACKAGE_NAME": "com.interswitch.payment.cordova"
         }
     },
     "dependent_plugins": {},
     "modules": [
-        {
-            "file": "plugins/com.interswitchng.sdk.payment/www/PaymentPlugin.js",
-            "id": "com.interswitchng.sdk.payment.PaymentPlugin",
-            "clobbers": [
-                "PaymentPlugin"
-            ]
-        },
         {
             "file": "plugins/com.filfatstudios.spinnerdialog/www/SpinnerDialog.js",
             "id": "com.filfatstudios.spinnerdialog.SpinnerDialog",
             "clobbers": [
                 "SpinnerDialog"
             ]
+        },
+        {
+            "file": "plugins/com.interswitchng.sdk.payment/www/PaymentPlugin.js",
+            "id": "com.interswitchng.sdk.payment.PaymentPlugin",
+            "clobbers": [
+                "PaymentPlugin"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-whitelist": "1.2.2",
-        "cordova-plugin-add-swift-support": "1.0.4",
-        "com.interswitchng.sdk.payment": "0.0.1",
-        "com.filfatstudios.spinnerdialog": "1.0.2"
+        "com.filfatstudios.spinnerdialog": "1.0.2",
+        "cordova-plugin-add-swift-support": "1.6.2",
+        "com.interswitchng.sdk.payment": "0.0.1"
     }
 }

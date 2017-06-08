@@ -10,6 +10,8 @@ import com.interswitchng.sdk.payment.android.inapp.PayWithWallet;
 import com.interswitchng.sdk.payment.android.inapp.ValidateCard;
 import com.interswitchng.sdk.payment.model.PurchaseResponse;
 import com.interswitchng.sdk.payment.model.ValidateCardResponse;
+import com.interswitchng.sdk.payment.model.AuthorizeCardRequest;
+import com.interswitchng.sdk.payment.model.AuthorizeCardResponse;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -159,14 +161,14 @@ public class PayWithUI extends CordovaPlugin{
                     JSONObject params = args.getJSONObject(0);
                     String customerId = params.getString("customerId");
                     options = RequestOptions.builder().setClientId(clientId).setClientSecret(clientSecret).build();
-                    ValidateCard validateCard = new ValidateCard(activity, customerId, options, new IswCallback<ValidateCardResponse>() {
+                    ValidateCard validateCard = new ValidateCard(activity, customerId, options, new IswCallback<AuthorizeCardResponse>() {
                         @Override
                         public void onError(Exception error) {
                             callbackContext.error(error.getMessage());
                         }
 
                         @Override
-                        public void onSuccess(ValidateCardResponse response) {
+                        public void onSuccess(AuthorizeCardResponse response) {
                             PluginUtils.getPluginResult(callbackContext, response);
                         }
                     });
