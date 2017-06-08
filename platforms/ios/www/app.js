@@ -1,7 +1,7 @@
 function init() {
   var userDetails = {
-    clientId: "IKIAF8F70479A6902D4BFF4E443EBF15D1D6CB19E232",
-    clientSecret: "ugsmiXPXOOvks9MR7+IFHSQSdk8ZzvwQMGvd0GJva30=",
+//    clientId: "IKIAF8F70479A6902D4BFF4E443EBF15D1D6CB19E232",
+//    clientSecret: "ugsmiXPXOOvks9MR7+IFHSQSdk8ZzvwQMGvd0GJva30=",
     paymentApi: "https://qa.interswitchng.com",
     passportApi: "https://qa.interswitchng.com/passport"
   };

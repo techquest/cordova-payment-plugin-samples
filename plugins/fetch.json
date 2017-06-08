@@ -9,19 +9,10 @@
     },
     "cordova-plugin-add-swift-support": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/akofman/cordova-plugin-add-swift-support",
-            "subdir": "."
+            "type": "registry",
+            "id": "https://github.com/akofman/cordova-plugin-add-swift-support"
         },
         "is_top_level": false,
-        "variables": {}
-    },
-    "com.interswitchng.sdk.payment": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-payment-plugin"
-        },
-        "is_top_level": true,
         "variables": {}
     },
     "com.filfatstudios.spinnerdialog": {
@@ -32,5 +23,16 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "com.interswitchng.sdk.payment": {
+        "source": {
+            "type": "registry",
+            "id": "https://github.com/techquest/cordova-payment-plugin.git"
+        },
+        "is_top_level": true,
+        "variables": {
+            "CLIENT_ID": "IKIA7B379B0114CA57FAF8E19F5CC5063ED2220057EF",
+            "CLIENT_SECRET": "MiunSQ5S/N219UCVP1Lt2raPfwK9lMoiV/PdBX5v/R4="
+        }
     }
 }

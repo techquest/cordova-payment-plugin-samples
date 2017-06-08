@@ -9,6 +9,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data android:name="clientId" android:value="IKIA7B379B0114CA57FAF8E19F5CC5063ED2220057EF" />
+        <meta-data android:name="clientSecret" android:value="MiunSQ5S/N219UCVP1Lt2raPfwK9lMoiV/PdBX5v/R4=" />
     </application>
     <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="23" />
 </manifest>

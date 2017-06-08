@@ -13,6 +13,8 @@ function paymentAction (action) {
 }
 
 var PaymentPlugin = {};
+PaymentPlugin.SAFE_TOKEN_RESPONSE_CODE = "T0";
+PaymentPlugin.CARDINAL_RESPONSE_CODE = "S0";
 PaymentPlugin.init = paymentAction("Init");
 
 // Using Payment SDK UI
@@ -27,7 +29,8 @@ PaymentPlugin.makePayment = paymentAction("MakePayment");
 PaymentPlugin.loadWallet = paymentAction("LoadWallet");
 PaymentPlugin.payWithWalletSDK = paymentAction("PayWithWalletSDK");
 PaymentPlugin.validateCard = paymentAction("ValidateCard");
-PaymentPlugin.authorizeOtp = paymentAction("AuthorizeOTP");
+PaymentPlugin.authorizePurchase = paymentAction("AuthorizePurchase");
+PaymentPlugin.authorizeCard = paymentAction("AuthorizeCard");
 PaymentPlugin.paymentStatus = paymentAction("PaymentStatus");
 
 module.exports = PaymentPlugin;

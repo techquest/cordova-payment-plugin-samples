@@ -1,42 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="com.interswitch.payment.cordova" version="1.0.0">
-  <name>PaymentCordova</name>
-  <description/>
-  <author/>
-  <content src="index.html"/>
-  <allow-navigation href="*"/>
-  <allow-intent href="itms:*"/>
-  <allow-intent href="itms-apps:*"/>
-  <preference name="loglevel" value="DEBUG"/>
-  <preference name="AndroidLaunchMode" value="singleTop"/>
-  <preference name="ErrorUrl" value=""/>
-  <preference name="SplashScreen" value="screen"/>
-  <preference name="AllowInlineMediaPlayback" value="false"/>
-  <preference name="AutoHideSplashScreen" value="true"/>
-  <preference name="BackupWebStorage" value="cloud"/>
-  <preference name="EnableViewportScale" value="false"/>
-  <preference name="FadeSplashScreen" value="true"/>
-  <preference name="FadeSplashScreenDuration" value=".25"/>
-  <preference name="KeyboardDisplayRequiresUserAction" value="true"/>
-  <preference name="MediaPlaybackRequiresUserAction" value="false"/>
-  <preference name="ShowSplashScreenSpinner" value="false"/>
-  <preference name="SuppressesIncrementalRendering" value="false"/>
-  <preference name="TopActivityIndicator" value="gray"/>
-  <preference name="GapBetweenPages" value="0"/>
-  <preference name="PageLength" value="0"/>
-  <preference name="PaginationBreakingMode" value="page"/>
-  <preference name="PaginationMode" value="unpaginated"/>
-  <feature name="LocalStorage">
-    <param name="ios-package" value="CDVLocalStorage"/>
-  </feature>
-  <preference name="UIWebViewDecelerationSpeed" value="normal"/>
-  <preference name="monaca:targetFamilyiPhone" value="1"/>
-  <preference name="monaca:targetFamilyiPad" value="1"/>
-  <access origin="*"/>
-  <preference name="KeepRunning" value="true"/>
-  <preference name="monaca:AndroidIsPackageNameSeparate" value="false"/>
-  <preference name="DisallowOverscroll" value="true"/>
-  <preference name="Orientation" value="default"/>
-  <preference name="SplashScreenDelay" value="1000"/>
-  <preference name="Fullscreen" value="false"/>
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.interswitch.payment.cordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
+    <name>PaymentCordova</name>
+    <description />
+    <author />
+    <content src="index.html" />
+    <allow-navigation href="*" />
+    <allow-intent href="itms:*" />
+    <allow-intent href="itms-apps:*" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="AndroidLaunchMode" value="singleTop" />
+    <preference name="ErrorUrl" value="" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="BackupWebStorage" value="cloud" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="FadeSplashScreen" value="true" />
+    <preference name="FadeSplashScreenDuration" value=".25" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="SuppressesIncrementalRendering" value="false" />
+    <preference name="TopActivityIndicator" value="gray" />
+    <preference name="GapBetweenPages" value="0" />
+    <preference name="PageLength" value="0" />
+    <preference name="PaginationBreakingMode" value="page" />
+    <preference name="PaginationMode" value="unpaginated" />
+    <feature name="LocalStorage">
+        <param name="ios-package" value="CDVLocalStorage" />
+    </feature>
+    <preference name="UIWebViewDecelerationSpeed" value="normal" />
+    <preference name="monaca:targetFamilyiPhone" value="1" />
+    <preference name="monaca:targetFamilyiPad" value="1" />
+    <access origin="*" />
+    <preference name="KeepRunning" value="true" />
+    <preference name="monaca:AndroidIsPackageNameSeparate" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="Orientation" value="default" />
+    <preference name="SplashScreenDelay" value="1000" />
+    <preference name="Fullscreen" value="false" />
+    <plugin name="com.interswitchng.sdk.payment" spec="https://github.com/techquest/cordova-payment-plugin.git">
+        <variable name="CLIENT_ID" value="IKIA7B379B0114CA57FAF8E19F5CC5063ED2220057EF" />
+        <variable name="CLIENT_SECRET" value="MiunSQ5S/N219UCVP1Lt2raPfwK9lMoiV/PdBX5v/R4=" />
+    </plugin>
 </widget>

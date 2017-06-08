@@ -5,26 +5,23 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
+		301BF552109A68D80062928A /* ReferenceProxy in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
 		3047A5121AB8059700498E2A /* build-debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A50F1AB8059700498E2A /* build-debug.xcconfig */; };
 		3047A5131AB8059700498E2A /* build-release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A5101AB8059700498E2A /* build-release.xcconfig */; };
 		3047A5141AB8059700498E2A /* build.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A5111AB8059700498E2A /* build.xcconfig */; };
-		6D894BB82AA14B3EB3D28188 /* PaymentPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F337E81CBC94E48867E75E2 /* PaymentPlugin.swift */; };
-		7AC4D10E96F3426499EBA8B5 /* PayWithUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D28638876A248AFA1447C62 /* PayWithUI.swift */; };
-		7B3BEA51A7CF480ABC2B4DFD /* PaymentSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657D654D7C6649B4BE2EA307 /* PaymentSDK.framework */; };
-		AF2BAA9EA8B2487183ABA69D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8AE5039F8432BA87A867D /* Utils.swift */; };
-		DF8D94DFC249432AB92F4C92 /* PayWithoutUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7010268C3DD94C44A740663A /* PayWithoutUI.swift */; };
 		E788382D472324F8D8D41751 /* Pods_PaymentCordova.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A92A27F4284842863B0C9C /* Pods_PaymentCordova.framework */; };
 		F2FCD3A27F4F494BB1BFD928 /* CDVSpinnerDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F779031CFED84273984419FB /* CDVSpinnerDialog.m */; };
-		F3EB25BE1CFEDED4003813EF /* PaymentSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3EB25BD1CFEDED4003813EF /* PaymentSDK.framework */; };
-		F3EB25BF1CFEDED4003813EF /* PaymentSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F3EB25BD1CFEDED4003813EF /* PaymentSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2ABE24421F0546E8930B6B79 /* PaymentPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCBD991A7024C87A6FF593F /* PaymentPlugin.swift */; };
+		938D727D48F54C579C7AF4D1 /* PayWithoutUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFD5F8EABE40EAB7CDAA80 /* PayWithoutUI.swift */; };
+		32D2DCC724AF417CA9C7C3F8 /* PayWithUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34181454AA3C4406B101F81A /* PayWithUI.swift */; };
+		DF09F2B2D2494232A43F4E6A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4970B4F8396E42C696F94512 /* Utils.swift */; };
+		6FF4ED1F14C04085BD0C70C2 /* PaymentSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F829BEF5F249BC8FDF141D /* PaymentSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +48,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F3EB25BF1CFEDED4003813EF /* PaymentSDK.framework in Embed Frameworks */,
+				3708FF237B2D40A6B9F5036D /* PaymentSDK.framework in Frameworks */,
+				6FF4ED1F14C04085BD0C70C2 /* PaymentSDK.framework in Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,7 +62,6 @@
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* PaymentCordova.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaymentCordova.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2BB8AE5039F8432BA87A867D /* Utils.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = com.interswitchng.sdk.payment/Utils.swift; sourceTree = "<group>"; };
 		301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
 		301BF56E109A69640062928A /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = SOURCE_ROOT; };
 		302D95EE14D2391D003F00A1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -74,10 +71,6 @@
 		3047A5101AB8059700498E2A /* build-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "build-release.xcconfig"; path = "cordova/build-release.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3047A5111AB8059700498E2A /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = build.xcconfig; path = cordova/build.xcconfig; sourceTree = SOURCE_ROOT; };
 		32CA4F630368D1EE00C91783 /* PaymentCordova-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PaymentCordova-Prefix.pch"; sourceTree = "<group>"; };
-		3D28638876A248AFA1447C62 /* PayWithUI.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = PayWithUI.swift; path = com.interswitchng.sdk.payment/PayWithUI.swift; sourceTree = "<group>"; };
-		657D654D7C6649B4BE2EA307 /* PaymentSDK.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = PaymentSDK.framework; path = PaymentCordova/Plugins/com.interswitchng.sdk.payment/PaymentSDK.framework; sourceTree = "<group>"; };
-		6F337E81CBC94E48867E75E2 /* PaymentPlugin.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = PaymentPlugin.swift; path = com.interswitchng.sdk.payment/PaymentPlugin.swift; sourceTree = "<group>"; };
-		7010268C3DD94C44A740663A /* PayWithoutUI.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = PayWithoutUI.swift; path = com.interswitchng.sdk.payment/PayWithoutUI.swift; sourceTree = "<group>"; };
 		87DE9A83CB7682D513FDE6E5 /* Pods-PaymentCordova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaymentCordova.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PaymentCordova/Pods-PaymentCordova.debug.xcconfig"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PaymentCordova-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PaymentCordova-Info.plist"; path = "PaymentCordova/PaymentCordova-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
 		90A92A27F4284842863B0C9C /* Pods_PaymentCordova.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaymentCordova.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,9 +79,13 @@
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		F3EB25BD1CFEDED4003813EF /* PaymentSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PaymentSDK.framework; path = PaymentCordova/Plugins/com.interswitchng.sdk.payment/PaymentSDK.framework; sourceTree = "<group>"; };
 		F779031CFED84273984419FB /* CDVSpinnerDialog.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVSpinnerDialog.m; path = com.filfatstudios.spinnerdialog/CDVSpinnerDialog.m; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = PaymentCordova/config.xml; sourceTree = "<group>"; };
+		FBCBD991A7024C87A6FF593F /* PaymentPlugin.swift */ = {isa = PBXFileReference; name = "PaymentPlugin.swift"; path = "com.interswitchng.sdk.payment/PaymentPlugin.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		0FAFD5F8EABE40EAB7CDAA80 /* PayWithoutUI.swift */ = {isa = PBXFileReference; name = "PayWithoutUI.swift"; path = "com.interswitchng.sdk.payment/PayWithoutUI.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		34181454AA3C4406B101F81A /* PayWithUI.swift */ = {isa = PBXFileReference; name = "PayWithUI.swift"; path = "com.interswitchng.sdk.payment/PayWithUI.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		4970B4F8396E42C696F94512 /* Utils.swift */ = {isa = PBXFileReference; name = "Utils.swift"; path = "com.interswitchng.sdk.payment/Utils.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		C2F829BEF5F249BC8FDF141D /* PaymentSDK.framework */ = {isa = PBXFileReference; name = "PaymentSDK.framework"; path = "PaymentCordova/Plugins/com.interswitchng.sdk.payment/PaymentSDK.framework"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,10 +93,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3EB25BE1CFEDED4003813EF /* PaymentSDK.framework in Frameworks */,
-				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
-				7B3BEA51A7CF480ABC2B4DFD /* PaymentSDK.framework in Frameworks */,
+				301BF552109A68D80062928A /* ReferenceProxy in Frameworks */,
 				E788382D472324F8D8D41751 /* Pods_PaymentCordova.framework in Frameworks */,
+				6FF4ED1F14C04085BD0C70C2 /* PaymentSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,7 +123,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+		29B97314FDCFA39411CA2CEA = {
 			isa = PBXGroup;
 			children = (
 				F3EB25BD1CFEDED4003813EF /* PaymentSDK.framework */,
@@ -171,8 +167,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				657D654D7C6649B4BE2EA307 /* PaymentSDK.framework */,
 				90A92A27F4284842863B0C9C /* Pods_PaymentCordova.framework */,
+				C2F829BEF5F249BC8FDF141D /* PaymentSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -200,10 +196,10 @@
 			children = (
 				F779031CFED84273984419FB /* CDVSpinnerDialog.m */,
 				C2E765C8D0F54F71AE7C5C25 /* CDVSpinnerDialog.h */,
-				6F337E81CBC94E48867E75E2 /* PaymentPlugin.swift */,
-				7010268C3DD94C44A740663A /* PayWithoutUI.swift */,
-				3D28638876A248AFA1447C62 /* PayWithUI.swift */,
-				2BB8AE5039F8432BA87A867D /* Utils.swift */,
+				FBCBD991A7024C87A6FF593F /* PaymentPlugin.swift */,
+				0FAFD5F8EABE40EAB7CDAA80 /* PayWithoutUI.swift */,
+				34181454AA3C4406B101F81A /* PayWithUI.swift */,
+				4970B4F8396E42C696F94512 /* Utils.swift */,
 			);
 			name = Plugins;
 			path = PaymentCordova/Plugins;
@@ -234,14 +230,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PaymentCordova" */;
 			buildPhases = (
-				4CE67C53812CE41F082E9964 /* 📦 Check Pods Manifest.lock */,
+				4CE67C53812CE41F082E9964 /* [CP] Check Pods Manifest.lock */,
 				304B58A110DAC018002A0835 /* Copy www directory */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 				F3EB25C01CFEDED4003813EF /* Embed Frameworks */,
-				AE2691BA160B0FD53FD57939 /* 📦 Embed Pods Frameworks */,
-				0E14C7BB066321A99DE97424 /* 📦 Copy Pods Resources */,
+				AE2691BA160B0FD53FD57939 /* [CP] Embed Pods Frameworks */,
+				0E14C7BB066321A99DE97424 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,7 +255,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 730;
 				LastUpgradeCheck = 510;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PaymentCordova" */;
@@ -269,7 +265,8 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			mainGroup = 29B97314FDCFA39411CA2CEA;
+			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectReferences = (
 				{
@@ -310,14 +307,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0E14C7BB066321A99DE97424 /* 📦 Copy Pods Resources */ = {
+		0E14C7BB066321A99DE97424 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,29 +337,29 @@
 			shellScript = "NODEJS_PATH=/usr/local/bin; NVM_NODE_PATH=~/.nvm/versions/node/`nvm version 2>/dev/null`/bin; N_NODE_PATH=`find /usr/local/n/versions/node/* -maxdepth 0 -type d 2>/dev/null | tail -1`/bin; XCODE_NODE_PATH=`xcode-select --print-path`/usr/share/xcs/Node/bin; PATH=$NODEJS_PATH:$NVM_NODE_PATH:$N_NODE_PATH:$XCODE_NODE_PATH:$PATH && node cordova/lib/copy-www-build-step.js";
 			showEnvVarsInLog = 0;
 		};
-		4CE67C53812CE41F082E9964 /* 📦 Check Pods Manifest.lock */ = {
+		4CE67C53812CE41F082E9964 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		AE2691BA160B0FD53FD57939 /* 📦 Embed Pods Frameworks */ = {
+		AE2691BA160B0FD53FD57939 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,10 +378,10 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				F2FCD3A27F4F494BB1BFD928 /* CDVSpinnerDialog.m in Sources */,
-				6D894BB82AA14B3EB3D28188 /* PaymentPlugin.swift in Sources */,
-				DF8D94DFC249432AB92F4C92 /* PayWithoutUI.swift in Sources */,
-				7AC4D10E96F3426499EBA8B5 /* PayWithUI.swift in Sources */,
-				AF2BAA9EA8B2487183ABA69D /* Utils.swift in Sources */,
+				2ABE24421F0546E8930B6B79 /* PaymentPlugin.swift in Sources */,
+				938D727D48F54C579C7AF4D1 /* PayWithoutUI.swift in Sources */,
+				32D2DCC724AF417CA9C7C3F8 /* PayWithUI.swift in Sources */,
+				DF09F2B2D2494232A43F4E6A /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +400,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 87DE9A83CB7682D513FDE6E5 /* Pods-PaymentCordova.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -414,6 +412,8 @@
 					"$(inherited)",
 					PaymentCordova/Plugins/com.interswitchng.sdk.payment,
 					"$(PROJECT_DIR)/PaymentCordova/Plugins/com.interswitchng.sdk.payment",
+					"\"PaymentCordova/Plugins/com.interswitchng.sdk.payment\"",
+					"\"PaymentCordova/Plugins/com.interswitchng.sdk.payment\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -424,7 +424,9 @@
 				INFOPLIST_FILE = "PaymentCordova/PaymentCordova-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = PaymentCordova;
-				SWIFT_OBJC_BRIDGING_HEADER = "./PaymentCordova/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -432,6 +434,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 97BA0055B7227145FE988423 /* Pods-PaymentCordova.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -443,21 +446,25 @@
 					"$(inherited)",
 					PaymentCordova/Plugins/com.interswitchng.sdk.payment,
 					"$(PROJECT_DIR)/PaymentCordova/Plugins/com.interswitchng.sdk.payment",
+					"\"PaymentCordova/Plugins/com.interswitchng.sdk.payment\"",
+					"\"PaymentCordova/Plugins/com.interswitchng.sdk.payment\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PaymentCordova/PaymentCordova-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "PaymentCordova/PaymentCordova-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = PaymentCordova;
-				SWIFT_OBJC_BRIDGING_HEADER = "./PaymentCordova/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -478,13 +485,16 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/efe.ariaroo/Documents/dev/cordova/ios-final/WITHOUT_DEFERRED/cordova-payment-samples/platforms/ios/PaymentCordova/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -502,9 +512,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/efe.ariaroo/Documents/dev/cordova/ios-final/WITHOUT_DEFERRED/cordova-payment-samples/platforms/ios/PaymentCordova/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

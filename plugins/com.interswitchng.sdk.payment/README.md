@@ -38,10 +38,14 @@ The first step to ​using the plugin is to register as a merchant. This is desc
 * **cd** to the directory of your cordova project. 
 
 * Add the cordova-payment-plugin from CLI, using this command
+
+Replace clientId and clientSecret in the command below with your clientId and clientSecret
 ```terminal
-cordova plugin add https://github.com/techquest/cordova-payment-plugin.git
+cordova plugin add https://github.com/techquest/cordova-payment-plugin.git --variable CLIENT_ID=clientId --variable CLIENT_SECRET=clientSecret
 ```
+
 * Add ```android``` platform. Make sure to add the platform **after** adding the plugin.
+
 ```terminal
 cordova platform add android
 ```
@@ -51,7 +55,7 @@ cordova platform add android
 
 
 ## <a name='InstallationInstructionsForIos'></a>Plugin installation instructions for iOS
-* You'll need to have **Xcode 7.3** or later installed.
+* You'll need to have **Xcode 8.3.2** or later installed.
 
 * **cd** to the directory of your cordova project. 
 
@@ -59,7 +63,9 @@ cordova platform add android
 ```
 cordova plugin add https://github.com/techquest/cordova-payment-plugin.git
 ```
+
 * Add ```ios``` platform. Make sure to add the platform **after** adding the plugin.
+
 ```terminal
 cordova platform add ios
 ```
@@ -79,11 +85,13 @@ The **PaymentSDK.framework** needs some [Cocoapods](https://cocoapods.org/) depe
 * Close Xcode. **cd** into ```platforms/ios``` directory
 
 * Run: 
+
 ```terminal
 pod init
 ```
 
 * Open the **Podfile** created and replace ```#``` commented parts with the following.
+
 ```terminal
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "8.0"
@@ -91,14 +99,16 @@ use_frameworks!
 ```
 
 * Add the following to the **Podfile**, inside the first ```target``` block.
+
 ```
-pod 'CryptoSwift'
-pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
-pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
-pod 'OpenSSL'
+pod 'CryptoSwift', '0.6.9'
+pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :tag => '4.4.0'
+pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git', :tag => '3.1.4'
+pod 'OpenSSL-Universal', '1.0.2.10'
 ```
 
 * Now run:
+
 ```terminal
 pod install
 ```
@@ -112,6 +122,7 @@ During development of your app, you should use the Plugin in sandbox mode to ena
 
 * Use Sandbox Client Id and Client Secret got from the Sandbox Tab of the Developer Console after signup (usually you have to wait for 5 minutes after signup for you to see the Sandbox details) everywhere you are required to supply Client Id and Client Secret in the remainder of this documentation              
 * In your code, override the api base as follows
+
 ```javascript
     function init(){
         var userDetails = {
@@ -130,12 +141,13 @@ During development of your app, you should use the Plugin in sandbox mode to ena
 
 ## <a name='SDKWithUI'></a>Using the Plugin with UI (In PCI-DSS Scope: No )
 
-### <a name='Pay'>Pay with Card/Wallet
+### <a name='Pay'></a>Pay with Card/Wallet
 
 * To allow for Payment with Card or Wallet
 * Create a Pay button
 * In the onclick event of the Pay button, use this code
 1. Set up payment request like this: 
+
 ```javascript
     var payRequest = {			
         amount : 100, // Amount in Naira
@@ -144,7 +156,9 @@ During development of your app, you should use the Plugin in sandbox mode to ena
         description : "Purchase Phone" // Description of product to purchase
     }
 ```
+
 2. Create a button to make payment and use this code in the onclick event of the button
+
 ```javascript
     var paySuccess = function(response) {
         var purchaseResponse = JSON.parse(response); // transaction success reponse
@@ -156,7 +170,7 @@ During development of your app, you should use the Plugin in sandbox mode to ena
     PaymentPlugin.pay(payRequest, paySuccess, payFail);
 ```
 
-### <a name='PayWithCard'>Pay with Card
+### <a name='PayWithCard'></a>Pay with Card
 
 * To allow for Payment with Card only
 * Create a Pay button and set the payment request
@@ -169,7 +183,9 @@ During development of your app, you should use the Plugin in sandbox mode to ena
         description : "Purchase Phone" // Description of product to purchase
     }
 ```
+
 * In the onclick event of the Pay button, use this code.
+
 ```javascript
   var payWithCardSuccess = function(response) {
     var purchaseResponse = JSON.parse(response); // transaction success reponse
@@ -178,11 +194,10 @@ During development of your app, you should use the Plugin in sandbox mode to ena
   var payWithCardFail = function(response) {
     alert(response); // transaction failure reponse
   }
-
   PaymentPlugin.payWithCard(payWithCardRequest, payWithCardSuccess, payWithCardFail);
 ```
 
-### <a name='PayWithWallet'>Pay With Wallet
+### <a name='PayWithWallet'></a>Pay With Wallet
 
 * To allow for Payment with Wallet only
 * Create a Pay button and set the payment request
@@ -195,7 +210,9 @@ During development of your app, you should use the Plugin in sandbox mode to ena
         description : "Purchase Phone" // Description of product to purchase
     }
 ```
+
 * In the onclick event of the Pay button, use this code.
+
 ```javascript
     var payWithWalletSuccess = function(response) {
         var purchaseResponse = JSON.parse(response); // transaction success reponse
@@ -204,7 +221,6 @@ During development of your app, you should use the Plugin in sandbox mode to ena
     var payWithWalletFail = function(response) {
         alert(response); // transaction failure reponse
     }
-
     PaymentPlugin.payWithWallet(payWithWalletRequest, payWithWalletSuccess, payWithWalletFail);
 ```
 
@@ -212,28 +228,29 @@ During development of your app, you should use the Plugin in sandbox mode to ena
 
 * Validate card is used to check if a card is a valid card, it returns the card balance and token
 * Set up payment request like this: 
+
 ```javascript
     var validateCardRequest = {
         customerId : 1234567890 // Optional email, mobile no, BVN etc to uniquely identify the customer
     }
 ```
-* To call validate card, use this code.
-```javascript
-  var validatePaymentCardSuccess = function(response) {
-    var validateCardResponse = JSON.parse(resposne);
-    var token = validateCardResponse.token;
-    var tokenExpiryDate = validateCardResponse.tokenExpiryDate;
-    var balance = validateCardResponse.balance;
-    var panLast4Digits = validateCardResponse.panLast4Digits;
-    var cardType = validateCardResponse.cardType;
- 
-    alert("Validating your card was successful");
-  }
 
-  var validatePaymentCardFail = function(response) {
-    alert(response); // transaction failure reponse
-  }
-  PaymentPlugin.validatePaymentCard(validateCardRequest, validatePaymentCardSuccess, validatePaymentCardFail);
+* To call validate card, use this code.
+
+```javascript
+    var validatePaymentCardSuccess = function(response) {
+        var validateCardResponse = JSON.parse(resposne);
+        var token = validateCardResponse.token;
+        var tokenExpiryDate = validateCardResponse.tokenExpiryDate;
+        var balance = validateCardResponse.balance;
+        var panLast4Digits = validateCardResponse.panLast4Digits;
+        var cardType = validateCardResponse.cardType;
+        alert("Validating your card was successful");
+    }
+    var validatePaymentCardFail = function(response) {
+        alert(response); // transaction failure reponse
+    }
+    PaymentPlugin.validatePaymentCard(validateCardRequest, validatePaymentCardSuccess, validatePaymentCardFail);
 ```
 
 ### <a name='PayWithToken'></a> Pay with Token
@@ -241,6 +258,7 @@ During development of your app, you should use the Plugin in sandbox mode to ena
 * To allow for Payment with Token only
 * Create a Pay button
 * Set up payment request like this: 
+
 ```javascript
     var payWithTokenRequest = {
         pan : 5123459987670669364, //Token
@@ -253,17 +271,18 @@ During development of your app, you should use the Plugin in sandbox mode to ena
         description : "Pay for gown"
     }
 ```
-* In the onclick event of the Pay button, use this code.
-```javascript
-  var payWithTokenSuccess = function(response) {
-    var purchaseResponse = JSON.parse(response); // transaction success reponse
-    alert(purchaseResponse.message);
-  }
-  var payWithTokenFail = function(response) {
-    alert(response); // transaction failure reponse
-  }
 
-  PaymentPlugin.payWithToken(payWithTokenRequest, payWithTokenSuccess, payWithTokenFail);    
+* In the onclick event of the Pay button, use this code.
+
+```javascript
+      var payWithTokenSuccess = function(response) {
+        var purchaseResponse = JSON.parse(response); // transaction success reponse
+        alert(purchaseResponse.message);
+      }
+      var payWithTokenFail = function(response) {
+        alert(response); // transaction failure reponse
+      }    
+      PaymentPlugin.payWithToken(payWithTokenRequest, payWithTokenSuccess, payWithTokenFail);    
 ```
 
 ## <a name='SDKWithOutUI'></a>Using the Plugin without UI (In PCI-DSS Scope: Yes)
@@ -290,8 +309,32 @@ During development of your app, you should use the Plugin in sandbox mode to ena
 
 ```javascript
     var makePaymentSuccess = function(response) {
-        var responseObject = JSON.parse(response);
-        //the response object here contains amount, message, transactionIdentifier and transactionRef       
+        var responseObject ={};
+        if(response.responseCode !== undefined){
+          responseObject = response;
+        }else if (response.responseCode === undefined){
+          responseObject = JSON.parse(response);
+        }
+        if(responseObject.responseCode) {
+          if (responseObject.responseCode === "T0") {
+            ons.notification.prompt(responseObject.message).then(
+            function(otp) {
+              responseObject.method = "makePayment";
+              responseObject.otpValue = otp;
+              authorizePurchase(responseObject);
+            }
+          );
+          } 
+        }
+        else { 
+          if(responseObject.detailMessage !== undefined && responseObject.detailMessage !== null ){
+            alert(responseObject.detailMessage);  
+          }else{
+            alert(responseObject);
+          }
+        }       
+        //var responseObject = JSON.parse(response);
+        //the response object here contains amount, message, transactionIdentifier and transactionRef        
         alert(responseObject.message);
     }
     var makePaymentFail = function(response) {
@@ -303,14 +346,13 @@ During development of your app, you should use the Plugin in sandbox mode to ena
 ### <a name='PayWithWalletNoUI'></a>Pay with Wallet
 * To allow for Payment with Wallet only
 * Create a UI to collect amount, CVV, expiry date and PIN and to display user's Payment Method(s). Use the code below to load the Payment Method(s)
+
 ```javascript
     var loadWalletSuccess = function(response) {
         alert("Wallet loaded successfully");
-
         var responseObject = JSON.parse(response);
         // The responseObject here contains cardProduct, panLast4Digits and token, the token is used for making payment
         // Load the cardProduct on a dropdown list and use the token in making payment with wallet 
-
         for(var i = 0; i < response.length; i++){
             console.log(responseObject.paymentMethods[i].token);
             console.log(responseObject.paymentMethods[i].panLast4Digits);
@@ -338,11 +380,12 @@ During development of your app, you should use the Plugin in sandbox mode to ena
         customerId : 1234567890 // Optional email, mobile no, BVN etc to uniquely identify the customer.
     }
 ```
+
 * In the onclick event of the Pay button, use this code.
+
 ```javascript
     var payWithWalletSuccess = function(response) {
         var responseObject = JSON.parse(response);
-
         if(responseObject.otpTransactionIdentifier){
           // handle OTP
         } else {
@@ -376,26 +419,34 @@ During development of your app, you should use the Plugin in sandbox mode to ena
 
 ```javascript
     var validateCardSuccess = function(response) {
-        var validateCardResponse = JSON.parse(response);  // transaction success reponse
+        //var validateCardResponse = JSON.parse(response);  // transaction success response
         // The response object contains fields transactionIdentifier, transactionRef,
-        // message, balance, token, tokenExpiryDate, panLast4Digits and cardType. 
-
-        var token = validateCardResponse.token;
-        var tokenExpiryDate = validateCardResponse.tokenExpiryDate;
-        var balance = validateCardResponse.balance;
-        var panLast4Digits = validateCardResponse.panLast4Digits;
-        var cardType = validateCardResponse.cardType;
-
+        // message, balance, token, tokenExpiryDate, panLast4Digits and cardType.         
+        if(response.responseCode) {
+                  if (response.responseCode === "T0") {
+                    ons.notification.prompt(response.message).then(
+                    function(otp) {
+                      response.method = "validateCard";
+                      response.otpValue = otp;
+                      authorizePurchase(response);
+                    }
+                  );
+                  }                 
+                } else {
+                  var responseObject = JSON.parse(response);
+                   if(responseObject.message !== undefined){
+                      alert(responseObject.message);
+                  }else{
+                    alert(response);
+                  }
+                }
         // Save the token, tokenExpiryDate, cardType and panLast4Digits 
         // in order to pay with the token in the future.
-
         alert("Card Validation was successful");
-    }
-         
+    } 
     var validateCardFail = function(response) {
-        alert(response);// transaction failure reponse
+        alert(response);// transaction failure response
     }
-
     PaymentPlugin.validateCard(validateCardRequest, validateCardSuccess, validateCardFail);
 ```
 
@@ -405,29 +456,33 @@ During development of your app, you should use the Plugin in sandbox mode to ena
 * Create a UI to collect OTP
 * Create authorize otp button
 * Set up otp request using this code
-```javascript
-    var authorizeOtpRequest = {		
-        otp : 123456, // Accept OTP from user
-        otpTransactionIdentifier: "2121324", // Set the OTP identifier for the request
-        transactionRef: "13324444"	// Set the unique transaction reference.	
+
+```javascript     
+    var authorizeRequest = {
+      otp : results.otpValue,  // Accept OTP from user
+      paymentId: results.paymentId, // Set the OTP identifier for the request
+      transactionRef: results.transactionRef, // Set the unique transaction reference.
+      authData: results.authData // Set request authData.
     }
 ```
 
 * In the onclick event of the authorize otp button, use this code.
 
 ```javascript
-    var authorizeOtpSuccess = function(response) {      
-      var responseObject = JSON.parse(response);              // transaction success reponse
-      var theTransactionRef = responseObject.transactionRef;
-      
-      alert("Success: Approved by Financial Institution");
+   var authorizeSuccess = function(response) {             
+     var responseObject = JSON.parse(response);
+     var theTransactionRef = responseObject.transactionRef;     
+     alert(theTransactionRef); // transaction success response
+   }
+    var authorizeFail = function(response) {      
+      alert(response);                                // transaction failure response
+    }   
+    if(results.method ==="makePayment"){
+      PaymentPlugin.authorizePurchase(authorizeRequest, authorizeSuccess, authorizeFail);        
     }
-
-    var authorizeOtpFail = function(response) {      
-      alert("Payment failed");                                // transaction failure reponse
+    else if (results.method ==="validateCard"){
+      PaymentPlugin.authorizeCard(authorizeRequest, authorizeSuccess, authorizeFail);  
     }
-
-    PaymentPlugin.authorizeOtp(authorizeOtpRequest, authorizeOtpSuccess, authorizeOtpFail);  
 ```
 
 ### <a name='PaymentStatus'></a>Checking Payment Status
@@ -444,15 +499,14 @@ During development of your app, you should use the Plugin in sandbox mode to ena
 ```
 
 * To check the status of a payment made, use the code below
+
 ```javascript
     var paymentStatusSuccess = function(response) {
         var responseObject = JSON.parse(response);
         alert(responseObject.message);
     }
-
     var paymentStatusFail = function(response) {
         alert(response);
     }
-
     PaymentPlugin.paymentStatus(paymentStatusRequest, paymentStatusSuccess, paymentStatusFail);
 ```

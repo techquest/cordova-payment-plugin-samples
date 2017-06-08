@@ -4,11 +4,11 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="PaymentPlugin">
-        <param name="android-package" value="PaymentPlugin" />
-    </feature>
     <feature name="SpinnerDialog">
         <param name="android-package" value="com.filfatstudios.spinnerdialog.SpinnerDialog" />
+    </feature>
+    <feature name="PaymentPlugin">
+        <param name="android-package" value="PaymentPlugin" />
     </feature>
     <name>PaymentCordova</name>
     <description />

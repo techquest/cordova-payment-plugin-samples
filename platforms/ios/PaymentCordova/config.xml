@@ -30,6 +30,7 @@
     <allow-intent href="itms-apps:*" />
     <preference name="ErrorUrl" value="" />
     <access origin="*" />
+    <preference name="DisallowOverscroll" value="true" />
     <preference name="SuppressesLongPressGesture" value="false" />
     <preference name="Suppresses3DTouchGesture" value="false" />
     <preference name="loglevel" value="DEBUG" />
@@ -55,7 +56,6 @@
     <preference name="monaca:targetFamilyiPad" value="1" />
     <preference name="KeepRunning" value="true" />
     <preference name="monaca:AndroidIsPackageNameSeparate" value="false" />
-    <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="default" />
     <preference name="SplashScreenDelay" value="1000" />
     <preference name="Fullscreen" value="false" />

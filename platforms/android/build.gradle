@@ -87,6 +87,7 @@ ext {
 
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "com.interswitchng.sdk.payment/quickstart-build.gradle"
+apply from: "com.interswitchng.sdk.payment/cordova-build.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
